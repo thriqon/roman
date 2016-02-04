@@ -1,0 +1,12 @@
+
+language: go
+sudo: false
+
+go: 1.5
+
+install: go get -t ./...
+
+script:
+  - go test ./. -race
+  - go test -bench=.
+
