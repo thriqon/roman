@@ -23,8 +23,14 @@ var romanPrefixes = []struct {
 	{"I", 1},
 }
 
+// A Number is a romanly encoded unsigned integer. Internally, it's based on a
+// string, so all common string operations are available. A Number can be either constructed by
+// direct instantiation (only safe if the user is sure that it will parse, e.g. for constants)
+// with roman.Number("XXI"), or by converting from a native uint value with FromInt.
 type Number string
 
+// AsInt gives the value of the romanly encoded numeral as uint. It panics if any of the characters
+// in the Number are not valid at this point (e.g. unknown characters such as 'A').
 func (r Number) AsInt() uint {
 	var sum uint
 
@@ -42,6 +48,9 @@ outer:
 	return sum
 }
 
+// Add adds the given number to the receiver, and returns the result as roman
+// numeral.  Internally, this converts both numbers to uint, adds them, and
+// then encodes it back to roman.
 func (r Number) Add(x Number) Number {
 	return FromInt(r.AsInt() + x.AsInt())
 }

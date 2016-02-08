@@ -8,5 +8,5 @@ install: go get -t ./...
 
 script:
   - go test ./. -race
-  - go test -bench=.
+  - go test -bench=. ./benchmarking
 

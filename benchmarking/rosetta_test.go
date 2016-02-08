@@ -1,4 +1,4 @@
-package roman
+package benchmarking
 
 import (
 	"errors"

@@ -1,12 +1,15 @@
-package roman
+package benchmarking
 
 import "testing"
 
-import roman "github.com/StefanSchroeder/Golang-Roman"
+import (
+	schroeder "github.com/StefanSchroeder/Golang-Roman"
+	"github.com/thriqon/roman"
+)
 
 func benchmarkThis(rn string, b *testing.B) {
 	for n := 0; n < b.N; n++ {
-		if x := Number(rn).AsInt(); x < 0 {
+		if x := roman.Number(rn).AsInt(); x < 0 {
 			panic("will not happen")
 		}
 	}
@@ -14,7 +17,7 @@ func benchmarkThis(rn string, b *testing.B) {
 
 func benchmarkSchroeder(rn string, b *testing.B) {
 	for n := 0; n < b.N; n++ {
-		if x := roman.Arabic(rn); x < 0 {
+		if x := schroeder.Arabic(rn); x < 0 {
 			panic("will not happen")
 		}
 	}
